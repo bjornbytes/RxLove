@@ -10,7 +10,7 @@ local events = {
   'keypressed',
   'keyreleased',
   'mousefocus',
-  'mousemove',
+  'mousemoved',
   'mousepressed',
   'mousereleased',
   'quit',
