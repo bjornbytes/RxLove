@@ -14,7 +14,7 @@ love.keypressed
   end)
 ```
 
-See [main.lua](main.lua) for another example. Requires [RxLua](https://github.com/bjornbytes/RxLua).
+See [dragAndDrop.lua](dragAndDrop.lua) and [pong.lua](pong.lua) for more examples. Requires [RxLua](https://github.com/bjornbytes/RxLua).
 See [Reactive Extensions](http://reactivex.io) for more info.
 
 License
