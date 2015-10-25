@@ -2,7 +2,7 @@ local rx = require 'rx'
 require 'rx-love'
 
 -- This Subject keeps track of the x and y position of the circle.
-local object = rx.Subject.create(400, 300)
+local object = rx.BehaviorSubject.create(400, 300)
 
 local radius = 30
 local isLeft = function(x, y, button) return button == 'l' end
@@ -35,6 +35,7 @@ local drag = leftPressed
 -- Subscribe to the love.draw event and draw the circle.
 love.draw:subscribe(function()
   local x, y = object:getValue()
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(255, 0, 0)
   love.graphics.circle('fill', x, y, radius)
+  love.graphics.circle('line', x, y, radius)
 end)
