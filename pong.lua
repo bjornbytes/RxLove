@@ -54,17 +54,18 @@ end
 local function identity(...) return ... end
 local function const(val) return function() return val end end
 local function dt() return love.update:getValue() end
-local function move(player, direction)
-  state[player].y = state[player].y + direction * paddleSpeed * dt()
+local function move(dt, player, direction)
+  state[player].y = state[player].y + direction * paddleSpeed * dt
 end
 
 -- Respond to key presses to move players
 for _, key in pairs({'up', 'down', 'w', 's'}) do
   love.update
-    :map(const(key))
-    :filter(love.keyboard.isDown)
-    :map(function(key)
-      return unpack(keyMap[key])
+    :filter(function()
+      return love.keyboard.isDown(key)
+    end)
+    :map(function(dt)
+      return dt, unpack(keyMap[key])
     end)
     :subscribe(move)
 end
@@ -72,9 +73,9 @@ end
 -- Move ball
 love.update
   :skip(1)
-  :subscribe(function()
-    state.ball.x = state.ball.x + math.cos(state.ball.direction) * state.ball.speed * dt()
-    state.ball.y = state.ball.y + math.sin(state.ball.direction) * state.ball.speed * dt()
+  :subscribe(function(dt)
+    state.ball.x = state.ball.x + math.cos(state.ball.direction) * state.ball.speed * dt
+    state.ball.y = state.ball.y + math.sin(state.ball.direction) * state.ball.speed * dt
   end)
 
 -- Collision on top and bottom
