@@ -5,20 +5,28 @@
 local rx = require 'rx'
 
 local events = {
+  'directorydropped',
   'draw',
+  'filedropped',
   'focus',
   'keypressed',
   'keyreleased',
+  'lowmemory',
   'mousefocus',
   'mousemoved',
   'mousepressed',
   'mousereleased',
   'quit',
   'resize',
+  'textedited',
   'textinput',
+  'touchmoved',
+  'touchpressed',
+  'touchreleased',
   'threaderror',
   'update',
-  'visible'
+  'visible',
+  'wheelmoved'
 }
 
 for _, event in pairs(events) do
